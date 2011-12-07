@@ -1,0 +1,11 @@
+diff -up eog-2.25.1/configure.ac.libxml eog-2.25.1/configure.ac
+--- eog-2.25.1/configure.ac.libxml	2008-11-12 21:44:11.000000000 -0500
++++ eog-2.25.1/configure.ac	2008-11-12 21:44:30.000000000 -0500
+@@ -96,6 +96,7 @@ EXEMPI_REQUIRED=1.99.5
+ EOG_MODULES="gtk+-2.0 >= $GTK_REQUIRED \
+              glib-2.0 >= $GLIB_REQUIRED \
+              gio-2.0 >= $GLIB_REQUIRED \
++             libxml-2.0 \
+              libgnomeui-2.0 >= $LIBGNOMEUI_REQUIRED \
+              gdk-pixbuf-2.0 >= $GDKPIXBUF_REQUIRED \
+              gconf-2.0 >= $GCONF_REQUIRED \

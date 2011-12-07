@@ -1,0 +1,59 @@
+diff -up eog-2.28.2/src/eog-application.c.dir-prefix eog-2.28.2/src/eog-application.c
+--- eog-2.28.2/src/eog-application.c.dir-prefix	2010-03-22 09:41:51.025685533 -0400
++++ eog-2.28.2/src/eog-application.c	2010-03-22 09:43:31.915437033 -0400
+@@ -540,7 +540,14 @@ eog_application_screensaver_disable (Eog
+ static void
+ eog_application_load_accelerators (void)
+ {
+-	gchar *accelfile = g_build_filename (g_get_home_dir (),
++        const gchar *override;
++        gchar *accelfile;
++
++        override = g_getenv ("GNOME22_USER_DIR");
++        if (override)
++                accelfile = g_build_filename (override, "accels", "eog", NULL);
++        else
++	        accelfile = g_build_filename (g_get_home_dir (),
+ 					     ".gnome2",
+ 					     "accels",
+ 					     "eog", NULL);
+@@ -553,7 +560,14 @@ eog_application_load_accelerators (void)
+ static void
+ eog_application_save_accelerators (void)
+ {
+-	gchar *accelfile = g_build_filename (g_get_home_dir (),
++        const gchar *override;
++        gchar *accelfile;
++
++        override = g_getenv ("GNOME22_USER_DIR");
++        if (override)
++                accelfile = g_build_filename (override, "accels", "eog", NULL);
++        else
++	        accelfile = g_build_filename (g_get_home_dir (),
+ 					     ".gnome2",
+ 					     "accels",
+ 					     "eog", NULL);
+diff -up eog-2.28.2/src/eog-util.c.dir-prefix eog-2.28.2/src/eog-util.c
+--- eog-2.28.2/src/eog-util.c.dir-prefix	2010-03-22 09:40:31.216432074 -0400
++++ eog-2.28.2/src/eog-util.c	2010-03-22 09:41:40.835435358 -0400
+@@ -253,11 +253,16 @@ eog_util_dot_dir (void)
+ {
+ 	if (dot_dir == NULL) {
+ 		gboolean exists;
++                const gchar *override;
+ 
+-		dot_dir = g_build_filename (g_get_home_dir (),
+-					    ".gnome2",
+-					    "eog",
+-					    NULL);
++                override = g_getenv ("GNOME22_USER_DIR");
++                if (override)
++                        dot_dir = g_build_filename (override, "eog", NULL);
++                else
++		        dot_dir = g_build_filename (g_get_home_dir (),
++					            ".gnome2",
++					            "eog",
++					            NULL);
+ 
+ 		exists = ensure_dir_exists (dot_dir);
+ 

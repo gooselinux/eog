@@ -1,0 +1,12 @@
+diff -up eog-2.28.2/help/eog.omf.in.doc-category eog-2.28.2/help/eog.omf.in
+--- eog-2.28.2/help/eog.omf.in.doc-category	2010-05-03 17:20:09.070181753 -0400
++++ eog-2.28.2/help/eog.omf.in	2010-05-03 17:20:18.080182522 -0400
+@@ -1,7 +1,7 @@
+ <?xml version="1.0" standalone="no"?>
+ <omf>
+   <resource>
+-    <subject category="GNOME|Applications|Graphics"/>
++    <subject category="GNOME|Graphics"/>
+     <type>
+       user's guide
+     </type>
